@@ -60,7 +60,12 @@
     const el = document.createElement('div');
     el.className = 'demo-person';
     el.style.setProperty('--c', meta.color);
-    el.innerHTML = `<i></i><b>${meta.label}</b>`;
+    // Built as nodes, not markup: nothing here can ever become an injection
+    // point if ROLES stops being a hardcoded constant.
+    el.appendChild(document.createElement('i'));
+    const label = document.createElement('b');
+    label.textContent = meta.label;
+    el.appendChild(label);
     el.style.left = ENTRANCE[0] + '%';
     el.style.top = ENTRANCE[1] + '%';
     floorEl.appendChild(el);
@@ -100,10 +105,15 @@
     const meta = ROLES[role] ?? ROLES['general-purpose'];
     const row = document.createElement('div');
     row.className = 'demo-line ' + kind;
-    row.innerHTML =
-      `<span class="demo-role" style="color:${meta.color};border-color:${meta.color}">${meta.label}</span>` +
-      `<span class="demo-text"></span>`;
-    row.querySelector('.demo-text').textContent = text;
+    const badge = document.createElement('span');
+    badge.className = 'demo-role';
+    badge.style.color = meta.color;
+    badge.style.borderColor = meta.color;
+    badge.textContent = meta.label;
+    const body = document.createElement('span');
+    body.className = 'demo-text';
+    body.textContent = text;
+    row.append(badge, body);
     feedEl.appendChild(row);
     while (feedEl.children.length > 9) feedEl.firstElementChild.remove();
     feedEl.scrollTop = feedEl.scrollHeight;
