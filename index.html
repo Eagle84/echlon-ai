@@ -225,7 +225,7 @@
           </form>
           <p id="engine-error" class="engine-error" hidden>That does not look like a web address.</p>
           <p>
-            On the machine running it, the address is <code>http://localhost:5173</code>. This device
+            On the machine running it, the address is <code>http://localhost:4180</code>. This device
             remembers whatever you enter, so Log in goes straight there next time.
           </p>
         </div>
@@ -331,7 +331,8 @@
           /* private mode */
         }
         var local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-        var target = saved || (local ? 'http://localhost:5173' : '');
+        // 4180 is the engine, which serves the built dashboard on one origin.
+        var target = saved || (local ? 'http://localhost:4180' : '');
 
         Array.prototype.forEach.call(document.querySelectorAll('[data-login]'), function (link) {
           if (target) {
