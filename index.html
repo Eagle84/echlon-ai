@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Echlon AI — a virtual software company of AI agents</title>
+    <meta
+      name="description"
+      content="Echlon AI turns a business goal into working software using a hierarchy of AI agents — a CTO who plans, a Dev Lead who delegates and reviews, and specialist engineers who build — visualised as a live 3D office."
+    />
+    <style>
+      :root {
+        --bg: #0b0e14;
+        --surface: #12151d;
+        --surface-2: #181d29;
+        --border: #232b3d;
+        --text: #e6eaf2;
+        --muted: #8a94a8;
+        --subtle: #5b6474;
+        --primary: #6366f1;
+        --primary-text: #9db8ff;
+        --success: #10b981;
+        --mono: Consolas, "Cascadia Code", monospace;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+      }
+      .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+      header { padding: 84px 0 56px; border-bottom: 1px solid var(--border); }
+      .logo { color: var(--primary); font-size: 40px; }
+      h1 { font-size: clamp(30px, 5vw, 46px); margin: 12px 0 10px; letter-spacing: -0.5px; }
+      .tagline { font-size: clamp(16px, 2.3vw, 20px); color: var(--muted); max-width: 640px; margin: 0; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+      .chip {
+        font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px;
+        background: #24304a; color: var(--primary-text);
+      }
+      section { padding: 52px 0; border-bottom: 1px solid var(--border); }
+      h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 0 0 20px; }
+      h3 { font-size: 17px; margin: 0 0 6px; }
+      p { color: #c2cbdb; }
+      .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+      .card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-top: 3px solid var(--primary); border-radius: 10px; padding: 18px 20px;
+      }
+      .card p { font-size: 14px; color: var(--muted); margin: 0; }
+      .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 14px; }
+      .stage {
+        background: var(--surface-2); border: 1px solid var(--border);
+        border-radius: 8px; padding: 8px 14px; font-weight: 600;
+      }
+      .stage.gate { border-color: var(--primary); color: var(--primary-text); }
+      .arrow { color: var(--subtle); }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+      th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px; }
+      code { font-family: var(--mono); font-size: 13px; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; }
+      ul { padding-left: 20px; color: #c2cbdb; }
+      li { margin: 6px 0; }
+      footer { padding: 40px 0 64px; color: var(--subtle); font-size: 13px; }
+      .note {
+        background: var(--surface); border-left: 3px solid var(--success);
+        padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 14px; color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="logo">◆</div>
+        <h1>Echlon AI</h1>
+        <p class="tagline">
+          A virtual software company staffed by AI agents. Give it a business goal; a CTO plans it,
+          you approve the plan, a Dev Lead delegates to specialist engineers, and deterministic
+          checks decide whether the work actually ships.
+        </p>
+        <div class="chips">
+          <span class="chip">Claude Agent SDK</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">React + Three.js</span>
+          <span class="chip">Human-in-the-loop</span>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="wrap">
+        <h2>How a run works</h2>
+        <div class="flow">
+          <span class="stage">Plan</span><span class="arrow">→</span>
+          <span class="stage gate">Approve (you)</span><span class="arrow">→</span>
+          <span class="stage">Execute</span><span class="arrow">→</span>
+          <span class="stage">Validate</span><span class="arrow">→</span>
+          <span class="stage">Deliver</span>
+        </div>
+        <p style="margin-top: 22px">
+          The CTO turns your goal into a machine-readable task breakdown, with an owner and explicit
+          acceptance criteria per task. Nothing is built until you approve that plan. The Dev Lead
+          then delegates each task, reviews the returned work against its acceptance criteria, and
+          sends it back if it falls short. Finally the workspace is validated by actually running
+          lint and tests — not by asking a model whether it went well.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>The org chart</h2>
+        <table>
+          <thead>
+            <tr><th>Tier</th><th>Role</th><th>Responsibility</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Executive</td><td>CTO</td>
+              <td>Turns the goal into a plan with owners and acceptance criteria. Holds no file-writing tools — it plans, it does not build.</td>
+            </tr>
+            <tr>
+              <td>Management</td><td>Dev Lead</td>
+              <td>Delegates each task, reviews every result against its criteria, and re-delegates on failure. Writes no code itself.</td>
+            </tr>
+            <tr>
+              <td>Execution</td>
+              <td>Frontend · Backend · Android · QA · Automation</td>
+              <td>Each receives exactly one task with a fresh context and the tools for its discipline.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top: 18px">
+          Roles are data, not code — a YAML file with a prompt, a model tier, a tool list and skills.
+          Adding a department is a new file, not a new module.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>What makes it trustworthy</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Deterministic gates</h3>
+            <p>Lint and tests are executed as real commands. An empty workspace fails validation instead of quietly reporting success.</p>
+          </div>
+          <div class="card">
+            <h3>Two-level self-correction</h3>
+            <p>The Dev Lead reviews each task before accepting it; the validator loops fixes back to the team up to three times.</p>
+          </div>
+          <div class="card">
+            <h3>You hold the gate</h3>
+            <p>No execution starts before you approve the plan — and you can reject it with feedback, or stop a run mid-flight.</p>
+          </div>
+          <div class="card">
+            <h3>Budget aware</h3>
+            <p>Per-phase and per-run spend caps, with live cost and token usage broken down by model.</p>
+          </div>
+          <div class="card">
+            <h3>Honest reporting</h3>
+            <p>Per-employee retrospectives are computed from recorded activity — files written, commands run, review verdicts — not generated opinion.</p>
+          </div>
+          <div class="card">
+            <h3>Context discipline</h3>
+            <p>Each agent gets only its own task spec. No agent inherits another's transcript, which keeps runs cheap and focused.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>The office view</h2>
+        <p>
+          Every agent instance is a person in a 3D office. New hires walk in through the entrance and
+          take a briefing in the Dev Lead's office before sitting down at a desk that appears for
+          them. Finished work is reported face to face, and the review verdict appears above the Dev
+          Lead's head. There are daily standups in the meeting room, coffee breaks, colleagues
+          walking over to consult each other, and an inner monologue about the task each person was
+          actually assigned. When the project ships, the team celebrates and the hired staff head
+          home — leaving their desks behind.
+        </p>
+        <p>
+          It is a genuine view of the run, not a decoration: every movement is driven by the same
+          event stream that fills the text feed, and clicking a person opens their transcript and
+          retrospective.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Under the hood</h2>
+        <ul>
+          <li><strong>Engine</strong> — a phase state machine over the Claude Agent SDK; one query per phase, subagents composed at runtime from the role registry.</li>
+          <li><strong>Skills</strong> — a local bank of <code>SKILL.md</code> skills, materialised per run so each role only carries what it needs.</li>
+          <li><strong>Dashboard</strong> — Fastify + WebSocket streaming a normalised event log to a React UI; full replay on reconnect.</li>
+          <li><strong>Visualisation</strong> — react-three-fiber and Rapier; the floorplan is generated from the org chart, so new roles get rooms automatically.</li>
+        </ul>
+        <p class="note">
+          This site is published automatically from the private source repository by CI. The source,
+          configuration and run history are not public.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">Echlon AI — a personal project. Built with the Claude Agent SDK.</div>
+    </footer>
+  </body>
+</html>
