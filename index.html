@@ -3,10 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Echlon AI — a virtual software company of AI agents</title>
+    <title>Echlon AI — your software company, staffed by agents</title>
     <meta
       name="description"
-      content="Echlon AI turns a business goal into working software using a hierarchy of AI agents — a CTO who plans, a Dev Lead who delegates and reviews, and specialist engineers who build — visualised as a live 3D office."
+      content="Describe what you want built. A CTO plans it, you approve the plan, and a team of specialist AI engineers builds, reviews and tests it — while you watch every decision happen."
+    />
+    <meta property="og:title" content="Echlon AI — your software company, staffed by agents" />
+    <meta
+      property="og:description"
+      content="A plan you approve, work that is reviewed, and tests that decide whether it ships."
     />
     <style>
       :root {
@@ -14,82 +19,83 @@
         --surface: #12151d;
         --surface-2: #181d29;
         --border: #232b3d;
+        --border-strong: #33405e;
         --text: #e6eaf2;
         --muted: #8a94a8;
         --subtle: #5b6474;
         --primary: #6366f1;
         --primary-text: #9db8ff;
         --success: #10b981;
+        --warning: #f59e0b;
         --mono: Consolas, "Cascadia Code", monospace;
       }
       * { box-sizing: border-box; }
       body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
+        margin: 0; color: var(--text); line-height: 1.6;
         font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-        line-height: 1.6;
+        background:
+          radial-gradient(1100px 520px at 50% -10%, rgba(99, 102, 241, 0.16), transparent 65%),
+          var(--bg);
       }
-      .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
-      header { padding: 84px 0 56px; border-bottom: 1px solid var(--border); }
-      .logo { color: var(--primary); font-size: 40px; }
-      h1 { font-size: clamp(30px, 5vw, 46px); margin: 12px 0 10px; letter-spacing: -0.5px; }
-      .tagline { font-size: clamp(16px, 2.3vw, 20px); color: var(--muted); max-width: 640px; margin: 0; }
-      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
-      .chip {
-        font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px;
-        background: #24304a; color: var(--primary-text);
-      }
-      section { padding: 52px 0; border-bottom: 1px solid var(--border); }
-      h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 0 0 20px; }
-      h3 { font-size: 17px; margin: 0 0 6px; }
-      p { color: #c2cbdb; }
-      .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-      .card {
-        background: var(--surface); border: 1px solid var(--border);
-        border-top: 3px solid var(--primary); border-radius: 10px; padding: 18px 20px;
-      }
-      .card p { font-size: 14px; color: var(--muted); margin: 0; }
-      .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 14px; }
-      .stage {
-        background: var(--surface-2); border: 1px solid var(--border);
-        border-radius: 8px; padding: 8px 14px; font-weight: 600;
-      }
-      .stage.gate { border-color: var(--primary); color: var(--primary-text); }
-      .arrow { color: var(--subtle); }
-      table { width: 100%; border-collapse: collapse; font-size: 14px; }
-      th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
-      th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px; }
-      code { font-family: var(--mono); font-size: 13px; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; }
-      ul { padding-left: 20px; color: #c2cbdb; }
-      li { margin: 6px 0; }
-      footer { padding: 40px 0 64px; color: var(--subtle); font-size: 13px; }
-      .note {
-        background: var(--surface); border-left: 3px solid var(--success);
-        padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 14px; color: var(--muted);
-      }
+      .wrap { max-width: 1060px; margin: 0 auto; padding: 0 28px; }
 
-      .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-      .cta {
-        display: inline-block; padding: 11px 20px; border-radius: 9px; font-size: 14px;
-        font-weight: 600; text-decoration: none; color: var(--text);
-        border: 1px solid var(--border); background: var(--surface); transition: 0.15s;
+      nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+      .brand { font-size: 17px; font-weight: 700; }
+      .brand .logo { color: var(--primary); }
+      .nav-right { display: flex; align-items: center; gap: 16px; }
+      .navlink { color: var(--muted); text-decoration: none; font-size: 13.5px; }
+      .navlink:hover { color: var(--text); }
+      .login {
+        background: var(--primary); color: #fff; border: none; border-radius: 8px;
+        padding: 9px 20px; font-size: 13.5px; font-weight: 600; cursor: pointer;
+        text-decoration: none; display: inline-block; transition: 0.15s;
       }
-      .cta:hover { border-color: var(--primary); color: var(--primary-text); }
-      .cta.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
-      .cta.primary:hover { background: #4f52e0; color: #fff; }
-      .cta-hint { font-size: 12.5px; color: var(--subtle); margin: 12px 0 0; }
-      .code {
-        background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-        padding: 16px 18px; font-family: var(--mono); font-size: 13px; color: #c2cbdb;
-        overflow-x: auto; line-height: 1.7;
+      .login:hover { background: #4f52e0; }
+      .login.big { padding: 13px 28px; font-size: 15px; border-radius: 10px; }
+      .ghost {
+        background: transparent; border: 1px solid var(--border-strong); color: var(--muted);
+        border-radius: 10px; padding: 12px 24px; font-size: 14px; font-weight: 600;
+        text-decoration: none; display: inline-block;
       }
+      .ghost:hover { color: var(--text); border-color: var(--primary); }
 
-      /* ---------- cinematic demo ---------- */
+      header.hero { text-align: center; padding: 60px 0 44px; }
+      header.hero h1 {
+        font-size: clamp(34px, 6vw, 60px); line-height: 1.08; margin: 0 0 20px;
+        letter-spacing: -1.5px; font-weight: 800;
+      }
+      header.hero h1 em {
+        font-style: normal;
+        background: linear-gradient(100deg, #9db8ff, #a78bfa 55%, #34d399);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
+      header.hero p {
+        font-size: clamp(15px, 2vw, 18px); color: var(--muted);
+        max-width: 620px; margin: 0 auto; line-height: 1.62;
+      }
+      .cta { display: flex; gap: 12px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+      .caption { font-size: 12.5px; color: var(--subtle); text-align: center; margin-top: 14px; }
+
+      .props { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; padding: 46px 0; }
+      .prop { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; }
+      .prop h3 { margin: 0 0 8px; font-size: 15.5px; }
+      .prop p { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+
+      .flow { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding-bottom: 56px; }
+      .step {
+        display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--muted);
+        background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px;
+      }
+      .step b {
+        width: 20px; height: 20px; border-radius: 50%; background: var(--primary); color: #fff;
+        display: inline-flex; align-items: center; justify-content: center; font-size: 11px;
+      }
+      footer { border-top: 1px solid var(--border); padding: 26px 0 44px; font-size: 12.5px; color: var(--subtle); text-align: center; }
+
+      /* ---------- demo reel ---------- */
       .demo-shell {
         position: relative; border: 1px solid var(--border); border-radius: 14px;
-        overflow: hidden; background: #0d111a;
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+        overflow: hidden; background: #0d111a; box-shadow: 0 28px 70px rgba(0, 0, 0, 0.6);
       }
       .demo-chrome {
         display: flex; align-items: center; gap: 8px; padding: 9px 14px;
@@ -105,22 +111,19 @@
       .demo-phase.now { background: #2b3a5e; color: var(--primary-text); font-weight: 700; }
       .demo-clock { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--subtle); }
 
-      .demo-stage { display: grid; grid-template-columns: 1.15fr 1fr; min-height: 340px; }
+      .demo-stage { display: grid; grid-template-columns: 1.15fr 1fr; min-height: 330px; }
       @media (max-width: 720px) { .demo-stage { grid-template-columns: 1fr; } }
-
-      .demo-floor-wrap { position: relative; padding: 16px; border-right: 1px solid var(--border); }
+      .demo-floor-wrap { padding: 16px; border-right: 1px solid var(--border); }
       .demo-floor {
-        position: relative; width: 100%; height: 300px; border-radius: 10px;
-        background:
-          linear-gradient(#1a2030, #151a26);
+        position: relative; width: 100%; height: 296px; border-radius: 10px;
+        background: linear-gradient(#1a2030, #151a26);
         transform: perspective(900px) rotateX(46deg) rotateZ(-38deg) scale(0.92);
-        transform-style: preserve-3d; transition: filter 0.6s;
+        transition: filter 0.6s;
       }
-      .celebrate .demo-floor { filter: brightness(1.35) saturate(1.15); }
+      .celebrate .demo-floor { filter: brightness(1.3) saturate(1.15); }
       .demo-room {
         position: absolute; border: 1px solid #39435c; border-radius: 4px;
-        background: rgba(58, 68, 92, 0.42);
-        box-shadow: 0 8px 0 -2px rgba(0, 0, 0, 0.35);
+        background: rgba(58, 68, 92, 0.42); box-shadow: 0 8px 0 -2px rgba(0, 0, 0, 0.35);
       }
       .demo-room span {
         position: absolute; top: 4px; left: 6px; font-size: 8px; letter-spacing: 0.4px;
@@ -130,16 +133,14 @@
         position: absolute; left: 2%; right: 2%; top: 46%; height: 8%;
         background: rgba(120, 140, 190, 0.14); border-radius: 3px;
       }
-      .demo-person {
-        position: absolute; width: 0; height: 0; transition: left 0.75s ease-in-out, top 0.75s ease-in-out;
-      }
+      .demo-person { position: absolute; width: 0; height: 0; transition: left 0.75s ease-in-out, top 0.75s ease-in-out; }
       .demo-person i {
         position: absolute; left: -5px; top: -14px; width: 10px; height: 16px; border-radius: 5px;
-        background: var(--c); box-shadow: 0 0 10px var(--c), 0 3px 5px rgba(0, 0, 0, 0.6);
-        display: block;
+        background: var(--c); box-shadow: 0 0 10px var(--c), 0 3px 5px rgba(0, 0, 0, 0.6); display: block;
       }
       .demo-person b {
-        position: absolute; left: 50%; top: -30px; transform: translateX(-50%) rotateZ(38deg) rotateX(-46deg);
+        position: absolute; left: 50%; top: -30px;
+        transform: translateX(-50%) rotateZ(38deg) rotateX(-46deg);
         font-size: 8px; font-weight: 700; color: var(--c); white-space: nowrap;
         background: rgba(11, 14, 20, 0.85); padding: 1px 5px; border-radius: 4px;
       }
@@ -162,49 +163,39 @@
         border: 1px solid; white-space: nowrap; flex-shrink: 0;
       }
       .demo-text {
-        font-size: 11.5px; color: #c2cbdb; overflow: hidden; text-overflow: ellipsis;
+        font-size: 11.5px; color: #c2cbdb; overflow: hidden;
         display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
       }
       .demo-line.tool .demo-text { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
       .demo-line.phase .demo-text { color: var(--primary-text); font-weight: 600; }
       .demo-line.pass .demo-text { color: var(--success); font-weight: 600; }
-      .demo-line.fail .demo-text { color: #fbbf24; font-weight: 600; }
-      .demo-caption { font-size: 12px; color: var(--subtle); margin-top: 12px; }
+      .demo-line.fail .demo-text { color: var(--warning); font-weight: 600; }
       .demo-failed { display: none; }
     </style>
   </head>
   <body>
-    <header>
-      <div class="wrap">
-        <div class="logo">◆</div>
-        <h1>Echlon AI</h1>
-        <p class="tagline">
-          A virtual software company staffed by AI agents. Give it a business goal; a CTO plans it,
-          you approve the plan, a Dev Lead delegates to specialist engineers, and deterministic
-          checks decide whether the work actually ships.
-        </p>
-        <div class="chips">
-          <span class="chip">Claude Agent SDK</span>
-          <span class="chip">TypeScript</span>
-          <span class="chip">React + Three.js</span>
-          <span class="chip">Human-in-the-loop</span>
+    <div class="wrap">
+      <nav>
+        <div class="brand"><span class="logo">◆</span> Echlon AI</div>
+        <div class="nav-right">
+          <a class="navlink" href="#how">How it works</a>
+          <a class="login" href="http://localhost:5173" target="_blank" rel="noopener">Log in</a>
         </div>
-        <div class="cta-row">
-          <a class="cta primary" href="http://localhost:5173" target="_blank" rel="noopener">
-            Open the dashboard ↗
-          </a>
-          <a class="cta" href="#run-it">How do I run it?</a>
-        </div>
-        <p class="cta-hint">
-          The dashboard runs on your own machine — the button opens
-          <code>localhost:5173</code> and only works while the engine is running there.
-        </p>
-      </div>
-    </header>
+      </nav>
 
-    <section>
-      <div class="wrap">
-        <h2>See it run</h2>
+      <header class="hero">
+        <h1>Your software company,<br /><em>staffed by agents.</em></h1>
+        <p>
+          Describe what you want built. A CTO plans it, you approve the plan, and a team of
+          specialist engineers builds, reviews and tests it — while you watch every decision happen.
+        </p>
+        <div class="cta">
+          <a class="login big" href="http://localhost:5173" target="_blank" rel="noopener">Log in to run it</a>
+          <a class="ghost" href="#how">See how it works</a>
+        </div>
+      </header>
+
+      <section>
         <div class="demo-shell">
           <div class="demo-chrome">
             <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
@@ -218,14 +209,10 @@
             <span class="demo-clock">000s</span>
           </div>
 
-          <!-- If a real screen recording is committed as demo.mp4 it plays instead. -->
           <video
             id="demo-video"
             class="demo-failed"
-            autoplay
-            muted
-            loop
-            playsinline
+            autoplay muted loop playsinline
             onloadeddata="this.classList.remove('demo-failed');document.getElementById('demo-stage').style.display='none'"
             style="width: 100%; display: block"
           >
@@ -247,156 +234,38 @@
             <div class="demo-feed"></div>
           </div>
         </div>
-        <p class="demo-caption">
-          A real run, replayed. Every message, tool call, delegation and review verdict above is taken
-          verbatim from an actual run log — a small “write greet.js and a test for it” job — compressed
-          from four minutes into a few seconds.
-        </p>
-      </div>
-    </section>
+        <p class="caption">A real run, replayed — every message, delegation and review verdict comes from an actual run log.</p>
+      </section>
 
-    <section>
-      <div class="wrap">
-        <h2>How a run works</h2>
-        <div class="flow">
-          <span class="stage">Plan</span><span class="arrow">→</span>
-          <span class="stage gate">Approve (you)</span><span class="arrow">→</span>
-          <span class="stage">Execute</span><span class="arrow">→</span>
-          <span class="stage">Validate</span><span class="arrow">→</span>
-          <span class="stage">Deliver</span>
+      <section class="props" id="how">
+        <div class="prop">
+          <h3>A plan you approve</h3>
+          <p>Your goal becomes a task breakdown with an owner and acceptance criteria per task. Nothing is built until you say go.</p>
         </div>
-        <p style="margin-top: 22px">
-          The CTO turns your goal into a machine-readable task breakdown, with an owner and explicit
-          acceptance criteria per task. Nothing is built until you approve that plan. The Dev Lead
-          then delegates each task, reviews the returned work against its acceptance criteria, and
-          sends it back if it falls short. Finally the workspace is validated by actually running
-          lint and tests — not by asking a model whether it went well.
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <h2>The org chart</h2>
-        <table>
-          <thead>
-            <tr><th>Tier</th><th>Role</th><th>Responsibility</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Executive</td><td>CTO</td>
-              <td>Turns the goal into a plan with owners and acceptance criteria. Holds no file-writing tools — it plans, it does not build.</td>
-            </tr>
-            <tr>
-              <td>Management</td><td>Dev Lead</td>
-              <td>Delegates each task, reviews every result against its criteria, and re-delegates on failure. Writes no code itself.</td>
-            </tr>
-            <tr>
-              <td>Execution</td>
-              <td>Frontend · Backend · Android · QA · Automation</td>
-              <td>Each receives exactly one task with a fresh context and the tools for its discipline.</td>
-            </tr>
-          </tbody>
-        </table>
-        <p style="margin-top: 18px">
-          Roles are data, not code — a YAML file with a prompt, a model tier, a tool list and skills.
-          Adding a department is a new file, not a new module.
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <h2>What makes it trustworthy</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Deterministic gates</h3>
-            <p>Lint and tests are executed as real commands. An empty workspace fails validation instead of quietly reporting success.</p>
-          </div>
-          <div class="card">
-            <h3>Two-level self-correction</h3>
-            <p>The Dev Lead reviews each task before accepting it; the validator loops fixes back to the team up to three times.</p>
-          </div>
-          <div class="card">
-            <h3>You hold the gate</h3>
-            <p>No execution starts before you approve the plan — and you can reject it with feedback, or stop a run mid-flight.</p>
-          </div>
-          <div class="card">
-            <h3>Budget aware</h3>
-            <p>Per-phase and per-run spend caps, with live cost and token usage broken down by model.</p>
-          </div>
-          <div class="card">
-            <h3>Honest reporting</h3>
-            <p>Per-employee retrospectives are computed from recorded activity — files written, commands run, review verdicts — not generated opinion.</p>
-          </div>
-          <div class="card">
-            <h3>Context discipline</h3>
-            <p>Each agent gets only its own task spec. No agent inherits another's transcript, which keeps runs cheap and focused.</p>
-          </div>
+        <div class="prop">
+          <h3>Work that is reviewed</h3>
+          <p>A Dev Lead checks every result against its acceptance criteria and sends it back when it falls short — before you ever see it.</p>
         </div>
-      </div>
-    </section>
+        <div class="prop">
+          <h3>Proof, not promises</h3>
+          <p>Lint and tests run as real commands. An empty or broken result fails; it never reports success it cannot back up.</p>
+        </div>
+        <div class="prop">
+          <h3>Costs under control</h3>
+          <p>Per-phase and per-run spend caps, live cost by model, and a stop button that halts the whole company mid-task.</p>
+        </div>
+      </section>
 
-    <section>
-      <div class="wrap">
-        <h2>The office view</h2>
-        <p>
-          Every agent instance is a person in a 3D office. New hires walk in through the entrance and
-          take a briefing in the Dev Lead's office before sitting down at a desk that appears for
-          them. Finished work is reported face to face, and the review verdict appears above the Dev
-          Lead's head. There are daily standups in the meeting room, coffee breaks, colleagues
-          walking over to consult each other, and an inner monologue about the task each person was
-          actually assigned. When the project ships, the team celebrates and the hired staff head
-          home — leaving their desks behind.
-        </p>
-        <p>
-          It is a genuine view of the run, not a decoration: every movement is driven by the same
-          event stream that fills the text feed, and clicking a person opens their transcript and
-          retrospective.
-        </p>
-      </div>
-    </section>
+      <section class="flow">
+        <div class="step"><b>1</b> Describe the goal</div>
+        <div class="step"><b>2</b> Approve the plan</div>
+        <div class="step"><b>3</b> The team builds</div>
+        <div class="step"><b>4</b> Tests decide</div>
+        <div class="step"><b>5</b> You get the code</div>
+      </section>
 
-    <section>
-      <div class="wrap">
-        <h2>Under the hood</h2>
-        <ul>
-          <li><strong>Engine</strong> — a phase state machine over the Claude Agent SDK; one query per phase, subagents composed at runtime from the role registry.</li>
-          <li><strong>Skills</strong> — a local bank of <code>SKILL.md</code> skills, materialised per run so each role only carries what it needs.</li>
-          <li><strong>Dashboard</strong> — Fastify + WebSocket streaming a normalised event log to a React UI; full replay on reconnect.</li>
-          <li><strong>Visualisation</strong> — react-three-fiber and Rapier; the floorplan is generated from the org chart, so new roles get rooms automatically.</li>
-        </ul>
-        <p class="note">
-          This site is published automatically from the private source repository by CI. The source,
-          configuration and run history are not public.
-        </p>
-      </div>
-    </section>
-
-    <section id="run-it">
-      <div class="wrap">
-        <h2>Running it</h2>
-        <p>
-          Echlon AI is a local application, not a hosted service. The engine spawns agents, writes
-          real files and runs real commands on the machine it lives on — so the run screen exists
-          only where you start it. This page is the shop window; the workshop is your laptop.
-        </p>
-        <pre class="code">git clone git@github.com:Eagle84/echlon-ai-src.git
-cd echlon-ai-src
-npm install
-cp echlon.config.example.json echlon.config.json
-npm run dev</pre>
-        <p>
-          That starts the engine on <code>:4180</code> and the dashboard on
-          <code>localhost:5173</code>. Describe a goal, approve the CTO's plan, and switch to the
-          <strong>Office 3D</strong> tab to watch the team work. Source access is private.
-        </p>
-      </div>
-    </section>
-
-    <footer>
-      <div class="wrap">Echlon AI — a personal project. Built with the Claude Agent SDK.</div>
-    </footer>
+      <footer>Echlon AI · built with the Claude Agent SDK</footer>
+    </div>
     <script src="demo.js"></script>
   </body>
 </html>
