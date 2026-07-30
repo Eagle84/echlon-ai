@@ -100,6 +100,13 @@
       .login-help b { color: var(--text); }
       .login-help p { margin: 8px 0 0; line-height: 1.55; }
       .login-help code { font-family: var(--mono); font-size: 12px; color: var(--primary-text); }
+      .login-form { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+      .login-form input {
+        flex: 1; min-width: 200px; background: var(--bg); color: var(--text);
+        border: 1px solid var(--border-strong); border-radius: 8px; padding: 9px 12px; font-size: 13px;
+      }
+      .login-form input:focus { outline: none; border-color: var(--primary); }
+      .engine-error { color: var(--warning); }
 
       /* ---------- demo reel ---------- */
       .demo-shell {
@@ -201,15 +208,25 @@
           <a class="login big" data-login href="#" target="_blank" rel="noopener">Log in to run it</a>
         </div>
         <div class="login-help" id="login-help" hidden>
-          <b>Echlon AI runs on your own machine.</b>
+          <b>This device does not know where your engine is yet.</b>
           <p>
-            Start it there with <code>npm run dev</code> and open
-            <code>http://localhost:5173</code> on that machine.
+            Echlon AI runs on your own machine — this page is just the shop window, so there is no
+            log-in for it to open until it knows the address to send you to.
           </p>
+          <form class="login-form" id="login-form">
+            <input
+              id="engine-url"
+              type="url"
+              inputmode="url"
+              placeholder="https://your-engine-address"
+              aria-label="Engine address"
+            />
+            <button class="login" type="submit">Connect</button>
+          </form>
+          <p id="engine-error" class="engine-error" hidden>That does not look like a web address.</p>
           <p>
-            To reach it from this device, open this page once with your engine address appended —
-            <code>?app=https://your-engine-address</code> — and the Log in button will point there
-            from then on.
+            On the machine running it, the address is <code>http://localhost:5173</code>. This device
+            remembers whatever you enter, so Log in goes straight there next time.
           </p>
         </div>
       </header>
@@ -324,7 +341,35 @@
           link.addEventListener('click', function (e) {
             e.preventDefault();
             document.getElementById('login-help').hidden = false;
+            document.getElementById('engine-url').focus();
           });
+        });
+
+        // Entering the address here beats editing a query string by hand — the
+        // people who need this are usually on a phone.
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+          e.preventDefault();
+          var error = document.getElementById('engine-error');
+          var raw = document.getElementById('engine-url').value.trim();
+          if (raw && !/^https?:\/\//i.test(raw)) raw = 'https://' + raw;
+          var origin = '';
+          try {
+            var url = new URL(raw);
+            if (url.protocol === 'http:' || url.protocol === 'https:') origin = url.origin;
+          } catch (err) {
+            /* handled below */
+          }
+          if (!origin) {
+            error.hidden = false;
+            return;
+          }
+          error.hidden = true;
+          try {
+            localStorage.setItem(KEY, origin);
+          } catch (err) {
+            /* private mode — this visit still works */
+          }
+          location.href = origin;
         });
       })();
     </script>
