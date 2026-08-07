@@ -6,12 +6,12 @@
     <title>Echlon AI — your software company, staffed by agents</title>
     <meta
       name="description"
-      content="Describe what you want built. A CTO plans it, you approve the plan, and a team of specialist AI engineers builds, reviews and tests it — while you watch every decision happen."
+      content="Describe an outcome in one sentence. It routes to the department that owns it, that head plans it, specialists build it and a named reviewer signs it off — while you watch every decision happen. Fifty-two roles across eight departments, and roles are data, so you can add your own."
     />
     <meta property="og:title" content="Echlon AI — your software company, staffed by agents" />
     <meta
       property="og:description"
-      content="A plan you approve, work that is reviewed, and tests that decide whether it ships."
+      content="An org chart, not an assistant. A plan you approve, work a named reviewer signs off, and real tests that decide whether it ships."
     />
     <style>
       :root {
@@ -75,6 +75,20 @@
       }
       .cta { display: flex; gap: 12px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
       .caption { font-size: 12.5px; color: var(--subtle); text-align: center; margin-top: 14px; }
+
+      .org { padding: 46px 0 4px; text-align: center; }
+      .org h2 { font-size: clamp(22px, 3vw, 30px); margin: 0 0 10px; letter-spacing: -0.5px; }
+      .org-lede { color: var(--muted); font-size: 14.5px; max-width: 560px; margin: 0 auto 26px; line-height: 1.6; }
+      .org-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 16px; }
+      .org-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 18px; }
+      .org-stat b {
+        display: block; font-size: 34px; font-weight: 800; letter-spacing: -1px;
+        background: linear-gradient(100deg, #9db8ff, #a78bfa 60%);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
+      .org-stat span { display: block; margin-top: 7px; font-size: 13px; color: var(--muted); line-height: 1.5; }
+      .org-note { margin: 22px auto 0; max-width: 640px; font-size: 13px; color: var(--subtle); line-height: 1.65; }
+      .org-note b { color: var(--muted); }
 
       .props { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; padding: 46px 0; }
       .prop { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; }
@@ -214,8 +228,9 @@
       <header class="hero">
         <h1>Your software company,<br /><em>staffed by agents.</em></h1>
         <p>
-          Describe what you want built. A CTO plans it, you approve the plan, and a team of
-          specialist engineers builds, reviews and tests it — while you watch every decision happen.
+          Describe an outcome in one sentence. It routes itself to the department that owns it, that
+          head turns it into a plan you approve, specialists build it and a named reviewer signs it
+          off — while you watch every decision happen.
         </p>
         <div class="cta">
           <a class="login big" data-login href="#" target="_blank" rel="noopener">Log in to run it</a>
@@ -286,35 +301,62 @@
         <p class="caption">A real run, replayed — every message, delegation and review verdict comes from an actual run log.</p>
       </section>
 
+      <section class="org">
+        <h2>An organisation, not an assistant</h2>
+        <p class="org-lede">
+          Coding assistants help one person type faster. They do not plan work, split it, review it,
+          or refuse to ship something broken.
+        </p>
+        <div class="org-stats">
+          <div class="org-stat"><b>52</b><span>roles, each with a manager, a reviewer and a maintainer</span></div>
+          <div class="org-stat"><b>8</b><span>departments under a CEO, from engineering to field ops</span></div>
+          <div class="org-stat"><b>118</b><span>skills — playbooks a role brings to the work</span></div>
+        </div>
+        <p class="org-note">
+          Roles are <b>data, not code</b>: a YAML file and a job charter. Adding one puts it in the
+          org chart, the delegation pool and the 3D office without touching the engine — and adding
+          one with a team under it creates a department that requests can route to. The entire
+          security organisation was added that way. So was every physical-operations department.
+        </p>
+      </section>
+
       <section class="props" id="how">
         <div class="prop">
+          <h3>The request finds its own department</h3>
+          <p>You do not pick a team or a mode. A dispatch step reads the goal and hands it to the head who owns that work — and decides whether the run should produce a product or findings.</p>
+        </div>
+        <div class="prop">
           <h3>A plan you approve</h3>
-          <p>Your goal becomes a task breakdown with an owner and acceptance criteria per task. Nothing is built until you say go.</p>
+          <p>Your goal becomes a task breakdown with an owner and 2–5 acceptance criteria per task. Nothing is built until you say go — or let it run autonomously and have the department head sign it off.</p>
         </div>
         <div class="prop">
           <h3>Work that is reviewed</h3>
-          <p>A Dev Lead checks every result against its acceptance criteria and sends it back when it falls short — before you ever see it.</p>
+          <p>Every role names the reviewer who signs its work off. Results are checked against their acceptance criteria and sent back when they fall short — before you ever see them.</p>
         </div>
         <div class="prop">
           <h3>Proof, not promises</h3>
-          <p>Lint and tests run as real commands. An empty or broken result fails; it never reports success it cannot back up.</p>
+          <p>Lint and tests run as real commands, placeholder scripts that only print a message are rejected, and a UI app must boot and serve. "It compiles" is not evidence.</p>
+        </div>
+        <div class="prop">
+          <h3>An unfinished plan does not ship</h3>
+          <p>Tasks are tracked from the plan to a recorded verdict. Stop early and the work goes back in for what remains; a plan still unfinished fails the run rather than being delivered half-done.</p>
         </div>
         <div class="prop">
           <h3>Costs under control</h3>
-          <p>Per-phase and per-run spend caps, live cost by model, and a stop button that halts the whole company mid-task.</p>
+          <p>Per-phase and per-run spend caps, live cost by model, and one button that stops the whole company — subagents included — mid-task.</p>
         </div>
       </section>
 
       <section class="cost">
         <h2>What a team like this costs</h2>
         <p class="cost-lede">
-          The same sixteen roles, hired. Base salaries only — before payroll tax, benefits,
-          equipment or the months it takes to assemble them.
+          The whole chart, hired. Base salaries only — before payroll tax, benefits, equipment or
+          the months it takes to assemble them.
         </p>
         <div class="cost-grid">
           <div class="cost-card">
-            <b>$1.8M – $2.2M</b>
-            <span>annual base payroll for an equivalent human org</span>
+            <b>$3.5M – $4.6M</b>
+            <span>annual base payroll for all fifty-two roles, at the salaries set in the dashboard</span>
           </div>
           <div class="cost-card">
             <b>~2.5 person-days</b>
@@ -326,17 +368,21 @@
           </div>
         </div>
         <p class="cost-note">
-          Every run shows its own comparison in the dashboard — measured spend against estimated
-          salaried effort, with the assumptions on screen and adjustable.
+          A head staffs only the roles a goal actually needs, so most runs use a handful of the
+          fifty-two — you are not paying for the chart, you are paying for the run. The engine figure
+          is metered; the human one is an estimate the CTO makes per task while planning, which the
+          Dev Lead flags when the delivered work does not match it. Every run shows its own
+          comparison, with the arithmetic on screen and the salaries yours to set.
         </p>
       </section>
 
       <section class="flow">
         <div class="step"><b>1</b> Describe the goal</div>
-        <div class="step"><b>2</b> Approve the plan</div>
-        <div class="step"><b>3</b> The team builds</div>
-        <div class="step"><b>4</b> Tests decide</div>
-        <div class="step"><b>5</b> You get the code</div>
+        <div class="step"><b>2</b> It routes to a department</div>
+        <div class="step"><b>3</b> Approve the plan</div>
+        <div class="step"><b>4</b> The team builds and reviews</div>
+        <div class="step"><b>5</b> Tests decide</div>
+        <div class="step"><b>6</b> You get the code</div>
       </section>
 
       <footer>© 2026 Echlon AI · All rights reserved.</footer>
