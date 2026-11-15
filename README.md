@@ -2,7 +2,7 @@
 
 **A software company that runs itself.**
 
-Live site: **https://echlonlabs.com/**
+Live site: **https://echlonai.echlonlabs.com/**
 
 Describe an outcome in one sentence. A CTO agent turns it into a plan you approve, a Dev Group Manager delegates it to specialist engineers, every result is reviewed against its acceptance criteria, and lint and tests decide whether it ships. You watch it happen as a live transcript — or as a 3D office where each agent is a person walking to a colleague's desk.
 
